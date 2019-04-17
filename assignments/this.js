@@ -52,7 +52,10 @@ const gary = new trainer ('Vulpix I choose you!');
 ash.speak();
 gary.speak();
 
+
 // Principle 4
 // code example for Explicit Binding
 
 
+ash.speak.call(gary); 
+gary.speak.apply(ash);
