@@ -39,15 +39,15 @@ student.hobby = "hiking";
 // code example for New Binding
 
 function trainer(pokemon) {
-  this.choice = 'I choose ';
+  this.choice = 'I choose you!';
   this.pokemon = pokemon;
   this.speak = function() {
-    console.log(this.choice + this.pokemon);
+    console.log( this.pokemon + this.choice);
   };
 }
 
-const ash = new trainer ('Pikachu I choose you!');
-const gary = new trainer ('Vulpix I choose you!');
+const ash = new trainer ('Pikachu! ');
+const gary = new trainer ('Vulpix! ');
 
 ash.speak();
 gary.speak();
@@ -58,4 +58,4 @@ gary.speak();
 
 
 ash.speak.call(gary); 
-gary.speak.apply(ash);
+// gary.speak.apply(ash);
