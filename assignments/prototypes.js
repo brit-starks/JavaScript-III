@@ -45,11 +45,12 @@
 function GameObject(attributes){
     this.createdAt = attributes.createdAt;
     this.dimensions = attributes.dimensions;
+    this.name = attributes.name;
   }
 
   //This prototype is the method
 GameObject.prototype.destroy = function() {
-  return `${this.name} was removed from the game.`
+  return `${this.name} was removed from the game.`;
 }
 
 //Objects that are using constructor function
@@ -68,19 +69,19 @@ CharacterStats.prototype.takeDamage = function() {
 
 function Humanoid(attributes) {
   CharacterStats.call(this, attributes);
-  this.team = this.team;
-  this.weapons = this.weapons;
-  this.language = this.language;
+  this.team = attributes.team;
+  this.weapons = attributes.weapons;
+  this.language = attributes.language;
 }  
 
 //same steps here for grandchild
 //object.create to grab parent methods
 Humanoid.prototype = Object.create(CharacterStats.prototype);
-
 //child methods here
-Humanoid.prototype.Greet = function() {
-  return `${this} offers a greeting in ${this.language}.`;
+Humanoid.prototype.greet = function() {
+  return `${this.name} offers a greeting in ${this.language}.`;
 }
+
  
 
 
