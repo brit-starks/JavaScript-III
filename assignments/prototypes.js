@@ -41,7 +41,50 @@
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+//Parent constructor
+function GameObject(attributes){
+    this.createdAt = attributes.createdAt;
+    this.dimensions = attributes.dimensions;
+    this.name = attributes.name;
+  }
+
+  //This prototype is the method
+GameObject.prototype.destroy = function() {
+  return `${this.name} was removed from the game.`;
+}
+
+//Objects that are using constructor function
+//child constructor function
+function CharacterStats(attributes) {
+  //call method goes here
+  GameObject.call(this, attributes);
+  //child attributes here
+  this.healthPoints = attributes.healthPoints;
+}
+
+CharacterStats.prototype = Object.create(GameObject.prototype);
+CharacterStats.prototype.takeDamage = function() {
+  return `${this.name} took damage.`;
+}
+
+function Humanoid(attributes) {
+  CharacterStats.call(this, attributes);
+  this.team = attributes.team;
+  this.weapons = attributes.weapons;
+  this.language = attributes.language;
+}  
+
+//same steps here for grandchild
+//object.create to grab parent methods
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+//child methods here
+Humanoid.prototype.greet = function() {
+  return `${this.name} offers a greeting in ${this.language}.`;
+}
+
+ 
+
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -102,7 +145,7 @@
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
